@@ -10,7 +10,7 @@ def predictionexample():
     # Use a breakpoint in the code line below to debug your script.
     spark = SparkSession.builder.appName('Customers').getOrCreate()
     dataset = spark.read.csv("Ecommerce_Customers.csv", inferSchema=True, header=True)
-    #build feature
+    #build feature using Vectorassembler
     featureassembler = VectorAssembler(inputCols=["Avg Session Length", "Time on App", "Time on Website", "Length of Membership"],outputCol="Independent Features")
     output = featureassembler.transform(dataset)
     output.show()
