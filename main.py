@@ -19,6 +19,7 @@ def predictionexample():
     finalized_data.show()
     #split the data 80%, 20%
     train_data, test_data = finalized_data.randomSplit([0.80, 0.20])
+    #Regressormodel Linear
     regressor = LinearRegression(featuresCol='Independent Features', labelCol='Yearly Amount Spent')
     regressor = regressor.fit(train_data)
     pred_results = regressor.evaluate(test_data)
